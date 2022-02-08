@@ -3,6 +3,8 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/calculator.css' />
+    <script type="text/javascript" src="/javascripts/calc.js"></script>
+
   </head>
   <body>
     <div class="calculator">
@@ -10,7 +12,7 @@
 <!--         <button class='tab'>계산기</button> -->
 <!--         <button class='tab'>계산 조회</button> -->
 <!--       </div> -->
-      <form class="forms">
+
         <div>
           <div class="display-container">
             <div class="first">
@@ -22,49 +24,48 @@
             </div>
           </div>
           <div class="inputBtn">
-            <button class="button" value="ABS">ABS</button>
-            <button class="button" value="ROOT">ROOT</button>
+            <button class="button func1" value="ABS">ABS</button>
+            <button class="button func1" value="ROOT">ROOT</button>
             <button class="button small" value="(">(</button>
             <button class="button small" value=")">)</button>
-            <button class="button" value="AC">AC</button>
-            <button class="button" value="←">←</button>
+            <button class="button clear" value="AC">AC</button>
+            <button class="button back" value="←">←</button>
             <button class="button operator" value="÷">÷</button>
           </div>
           <div class="inputBtn">
-            <button class="button" value="SIN">SIN</button>
-            <button class="button" value="COS">COS</button>
+            <button class="button func1" value="SIN">SIN</button>
+            <button class="button func1" value="COS">COS</button>
             <button class="button" value="7">7</button>
             <button class="button" value="8">8</button>
             <button class="button" value="9">9</button>
             <button class="button operator" value="×">×</button>
           </div>
           <div class="inputBtn">
-            <button class="button" value="TAN">TAN</button>
-            <button class="button" value="ASIN">ASIN</button>
+            <button class="button func1" value="TAN">TAN</button>
+            <button class="button func1" value="ASIN">ASIN</button>
             <button class="button" value="4">4</button>
             <button class="button" value="5">5</button>
             <button class="button" value="6">6</button>
             <button class="button operator" value="+">+</button>
           </div>
           <div class="inputBtn">
-            <button class="button" value="ACOS">ACOS</button>
-            <button class="button" value="ATAN">ATAN</button>
+            <button class="button func1" value="ACOS">ACOS</button>
+            <button class="button func1" value="ATAN">ATAN</button>
             <button class="button" value="1">1</button>
             <button class="button" value="2">2</button>
             <button class="button" value="3">3</button>
             <button class="button operator" value="-">-</button>
           </div>
           <div class="inputBtn">
-            <button class="button" value="ROUND">ROUND</button>
-            <button class="button" value="IF">IF</button>
-            <button class="button" value="+/-">+/-</button>
+            <button class="button func2" value="ROUND">ROUND</button>
+            <button class="button func3" value="IF">IF</button>
+            <button class="button func4" value="+/-">+/-</button>
             <button class="button" value="0">0</button>
             <button class="button dot" value=".">.</button>
             <button class="button operator result" value="=">=</button>
           </div>
         </div>
-      </form>
+
     </div>
-    <script type="text/javascript" src="/javascript/calc.js"></script>
   </body>
 </html>
