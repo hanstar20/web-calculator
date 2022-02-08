@@ -2,60 +2,69 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/calculator.css' />
   </head>
   <body>
-    <div>
-      <div>
-        <button class='tab'>계산기</button>
-        <button class='tab'>계산 조회</button>
-      </div>
-      <div>
-        <input type='text' id='formulaBox' placeholder="0" />
-        <input type='text' id='errorBox' readonly />
-        <input type='text' id='resultBox' readonly />
-      </div>
-      <div>
-        <button class="btn" value="ABS" onclick="typing('ABS')">ABS</button>
-        <button class="btn" value="ROOT" onclick="typing('ROOT')">ROOT</button>
-        <button class="btn" value="(" onclick="typing('(')">(</button>
-        <button class="btn" value=")" onclick="typing(')')">)</button>
-        <button class="btn" value="AC" onclick="typing('AC')">AC</button>
-        <button class="btn" value="back" onclick="typing('back')">←</button>
-        <button class="btn" value="/" onclick="typing('/')">/</button>
-      </div>
-      <div>
-        <button class="btn" value="SIN" onclick="typing('SIN')">SIN</button>
-        <button class="btn" value="COS" onclick="typing('COS')">COS</button>
-        <button class="btn" value="7" onclick="typing('7')">7</button>
-        <button class="btn" value="8" onclick="typing('8')">8</button>
-        <button class="btn" value="9" onclick="typing('9')">9</button>
-        <button class="btn" value="/" onclick="typing('/')">÷</button>
-      </div>
-      <div>
-        <button class="btn" value="ABS" onclick="typing('ABS')">ABS</button>
-        <button class="btn" value="ROOT" onclick="typing('ROOT')">ROOT</button>
-        <button class="btn" value="(" onclick="typing('(')">(</button>
-        <button class="btn" value=")" onclick="typing(')')">)</button>
-        <button class="btn" value="AC" onclick="typing('AC')">AC</button>
-        <button class="btn" value="back" onclick="typing('back')">←</button>
-      </div>
-      <div>
-        <button class="btn" value="ABS" onclick="typing('ABS')">ABS</button>
-        <button class="btn" value="ROOT" onclick="typing('ROOT')">ROOT</button>
-        <button class="btn" value="(" onclick="typing('(')">(</button>
-        <button class="btn" value=")" onclick="typing(')')">)</button>
-        <button class="btn" value="AC" onclick="typing('AC')">AC</button>
-        <button class="btn" value="back" onclick="typing('back')">←</button>
-      </div>
-      <div>
-        <button class="btn" value="ABS" onclick="typing('ABS')">ABS</button>
-        <button class="btn" value="ROOT" onclick="typing('ROOT')">ROOT</button>
-        <button class="btn" value="(" onclick="typing('(')">(</button>
-        <button class="btn" value=")" onclick="typing(')')">)</button>
-        <button class="btn" value="AC" onclick="typing('AC')">AC</button>
-        <button class="btn" value="back" onclick="typing('back')">←</button>
-      </div>
+    <div class="calculator">
+<!--       <div> -->
+<!--         <button class='tab'>계산기</button> -->
+<!--         <button class='tab'>계산 조회</button> -->
+<!--       </div> -->
+      <form class="forms">
+        <div>
+          <div class="display-container">
+            <div class="first">
+              <input class='text' type='text' id='formulaBox' />
+            </div>
+            <div class="second">
+              <input class='text' type='text' id='errorBox' readonly />
+              <input class='text' type='text' id='resultBox' readonly />
+            </div>
+          </div>
+          <div class="inputBtn">
+            <button class="button" value="ABS">ABS</button>
+            <button class="button" value="ROOT">ROOT</button>
+            <button class="button small" value="(">(</button>
+            <button class="button small" value=")">)</button>
+            <button class="button" value="AC">AC</button>
+            <button class="button" value="←">←</button>
+            <button class="button operator" value="÷">÷</button>
+          </div>
+          <div class="inputBtn">
+            <button class="button" value="SIN">SIN</button>
+            <button class="button" value="COS">COS</button>
+            <button class="button" value="7">7</button>
+            <button class="button" value="8">8</button>
+            <button class="button" value="9">9</button>
+            <button class="button operator" value="×">×</button>
+          </div>
+          <div class="inputBtn">
+            <button class="button" value="TAN">TAN</button>
+            <button class="button" value="ASIN">ASIN</button>
+            <button class="button" value="4">4</button>
+            <button class="button" value="5">5</button>
+            <button class="button" value="6">6</button>
+            <button class="button operator" value="+">+</button>
+          </div>
+          <div class="inputBtn">
+            <button class="button" value="ACOS">ACOS</button>
+            <button class="button" value="ATAN">ATAN</button>
+            <button class="button" value="1">1</button>
+            <button class="button" value="2">2</button>
+            <button class="button" value="3">3</button>
+            <button class="button operator" value="-">-</button>
+          </div>
+          <div class="inputBtn">
+            <button class="button" value="ROUND">ROUND</button>
+            <button class="button" value="IF">IF</button>
+            <button class="button" value="+/-">+/-</button>
+            <button class="button" value="0">0</button>
+            <button class="button dot" value=".">.</button>
+            <button class="button operator result" value="=">=</button>
+          </div>
+        </div>
+      </form>
     </div>
+    <script type="text/javascript" src="/javascript/calc.js"></script>
   </body>
 </html>

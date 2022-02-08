@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('calculator', { title: '계산기' });
+  res.render('calculator', { title: '웹 계산기' });
 });
 
 module.exports = router;
