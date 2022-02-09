@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main Page</title>
+    <link rel='stylesheet' href='/stylesheets/calculator.css' />
+    <script type="text/javascript" src="/javascripts/calc.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="calculator">
+    <div>
+        <div class="display-container">
+            <div class="first">
+                <input class='text' type='text' id='formulaBox' />
+            </div>
+            <div class="second">
+                <input class='text' type='text' id='errorBox' readonly />
+                <input class='text' type='text' id='resultBox' readonly />
+            </div>
+        </div>
+        <div class="inputBtn">
+            <button class="button func1" value="ABS">ABS</button>
+            <button class="button func1" value="ROOT">ROOT</button>
+            <button class="button small" value="(">(</button>
+            <button class="button small" value=")">)</button>
+            <button class="button clear" value="AC">AC</button>
+            <button class="button back" value="←">←</button>
+            <button class="button operator" value="÷">÷</button>
+        </div>
+        <div class="inputBtn">
+            <button class="button func1" value="SIN">SIN</button>
+            <button class="button func1" value="COS">COS</button>
+            <button class="button" value="7">7</button>
+            <button class="button" value="8">8</button>
+            <button class="button" value="9">9</button>
+            <button class="button operator" value="×">×</button>
+        </div>
+    </div>
+</div>
+<div class='menu'>
+    <input class='text' type='text' id='countBox' readonly />
+    <input class='text' type='text' id='formulaNameBox' />
+    <button class='button' id='saveBtn'>저장</button>
+    <button class='button' id='referenceBtn'>조회</button>
+</div>
+</body>
+</html>

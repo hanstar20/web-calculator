@@ -4,15 +4,10 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/calculator.css' />
     <script type="text/javascript" src="/javascripts/calc.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="calculator">
-<!--       <div> -->
-<!--         <button class='tab'>계산기</button> -->
-<!--         <button class='tab'>계산 조회</button> -->
-<!--       </div> -->
-
         <div>
           <div class="display-container">
             <div class="first">
@@ -65,7 +60,12 @@
             <button class="button operator result" value="=">=</button>
           </div>
         </div>
-
+    </div>
+    <div class='menu'>
+      <input class='text' type='text' id='countBox' readonly />
+      <input class='text' type='text' id='formulaNameBox' />
+      <button class='button' id='saveBtn'>저장</button>
+      <button class='button' id='referenceBtn'>조회</button>
     </div>
   </body>
 </html>
