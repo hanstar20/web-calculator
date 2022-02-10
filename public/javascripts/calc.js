@@ -15,8 +15,66 @@ function setCalcView() {
   const buttons = document.querySelectorAll('button');
   const formulaBox = document.getElementById('formulaBox');
 
-  formulaBox.addEventListener('input', () => {
-    console.log(formulaBox.value);
+  const uppperAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  // 스페이스를 인식하기 위한 정규표현식
+  const pattern = /\s/g;
+  let formula = [];
+  let functionCheck = '';
+
+  formulaBox.addEventListener('input', (e) => {
+    // 필요 변수 선언
+    const cursorPos = formulaBox.selectionStart;
+    const inputString = formulaBox.value[cursorPos - 1];
+    const frontString = formulaBox.value.slice(0, cursorPos - 1);
+    const backString = formulaBox.value.slice(cursorPos, formulaBox.value.length);
+
+    // console.log('frontString', frontString);
+    // console.log('backString', backString);
+    console.log('inputString', inputString);
+
+    // backspace, delete가 들어 왔을 때는 따로 동작 X
+    if ((e.inputType == 'deleteContentBackward') | (e.inputType == 'deleteContentForward')) {
+      return;
+    }
+    // 그 외의 insertInput이 들어올 때 작동하는 것
+    else {
+      // 영문 대문자 일때만 functionCheck 넣어서 유지, 함수일 때 자동완성 만들기
+      if (uppperAlphabet.includes(inputString)) {
+        functionCheck += inputString;
+      } else if (inputString.match(pattern)) {
+        functionCheck = '';
+      } else {
+        functionCheck = '';
+      }
+
+      // functionCheck가 함수일 때 자동완성 만들기
+      switch (functionCheck) {
+        case 'ABS':
+        case 'ROOT':
+        case 'SIN':
+        case 'COS':
+        case 'TAN':
+        case 'ASIN':
+        case 'ACOS':
+        case 'ATAN':
+          formulaBox.value = frontString + inputString + '[]' + backString;
+          formulaBox.setSelectionRange(cursorPos + 1, cursorPos + 1);
+          functionCheck = '';
+          break;
+        case 'ROUND':
+          formulaBox.value = frontString + inputString + '[,]' + backString;
+          formulaBox.setSelectionRange(cursorPos + 1, cursorPos + 1);
+          functionCheck = '';
+          break;
+        case 'IF':
+          formulaBox.value = frontString + inputString + '[,,]' + backString;
+          formulaBox.setSelectionRange(cursorPos + 1, cursorPos + 1);
+          functionCheck = '';
+          break;
+      }
+
+      console.log('체크하는 것', functionCheck);
+    }
   });
 
   // 버튼 클릭시 Front 동작 설정
