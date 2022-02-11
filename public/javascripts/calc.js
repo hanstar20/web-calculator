@@ -16,28 +16,41 @@ function setCalcView() {
   const formulaBox = document.getElementById('formulaBox');
 
   const uppperAlphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const inputPossible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789+-*/()';
   // 스페이스를 인식하기 위한 정규표현식
   const pattern = /\s/g;
-  let formula = [];
+  let funcArr = [];
   let functionCheck = '';
 
   formulaBox.addEventListener('input', (e) => {
     // 필요 변수 선언
     const cursorPos = formulaBox.selectionStart;
-    const inputString = formulaBox.value[cursorPos - 1];
+    let inputString = '';
     const frontString = formulaBox.value.slice(0, cursorPos - 1);
     const backString = formulaBox.value.slice(cursorPos, formulaBox.value.length);
 
     // console.log('frontString', frontString);
     // console.log('backString', backString);
-    console.log('inputString', inputString);
+    // console.log('inputString', inputString);
+    console.log('cursorPos', cursorPos);
 
-    // backspace, delete가 들어 왔을 때는 따로 동작 X
-    if ((e.inputType == 'deleteContentBackward') | (e.inputType == 'deleteContentForward')) {
-      return;
+    // backspace가 들어 왔을 때는 따로 동작 X
+    if (e.inputType == 'deleteContentBackward') {
+      functionCheck = functionCheck.slice(0, -1);
+      functionPosRenew(funcArr, cursorPos, 'backspace');
+      console.log('funcArr', funcArr);
+      // delete가 들어왔을 떄
+    } else if (e.inputType == 'deleteContentForward') {
     }
     // 그 외의 insertInput이 들어올 때 작동하는 것
     else {
+      // 입력이 들어올 때 inputString 찾기
+      inputString = formulaBox.value[cursorPos - 1];
+
+      if (!inputPossible.includes(inputString)) {
+        formulaBox.value = formulaBox.value.slice(0, -1);
+      }
+
       // 영문 대문자 일때만 functionCheck 넣어서 유지, 함수일 때 자동완성 만들기
       if (uppperAlphabet.includes(inputString)) {
         functionCheck += inputString;
@@ -50,30 +63,40 @@ function setCalcView() {
       // functionCheck가 함수일 때 자동완성 만들기
       switch (functionCheck) {
         case 'ABS':
-        case 'ROOT':
         case 'SIN':
         case 'COS':
         case 'TAN':
+          formulaBox.value = frontString + inputString + '[]' + backString;
+          formulaBox.setSelectionRange(cursorPos + 1, cursorPos + 1);
+          functionCheck = '';
+          funcArr.push([cursorPos - 3, cursorPos, cursorPos + 1]);
+          break;
+        case 'ROOT':
         case 'ASIN':
         case 'ACOS':
         case 'ATAN':
           formulaBox.value = frontString + inputString + '[]' + backString;
           formulaBox.setSelectionRange(cursorPos + 1, cursorPos + 1);
           functionCheck = '';
+          funcArr.push([cursorPos - 4, cursorPos, cursorPos + 1]);
           break;
         case 'ROUND':
           formulaBox.value = frontString + inputString + '[,]' + backString;
           formulaBox.setSelectionRange(cursorPos + 1, cursorPos + 1);
           functionCheck = '';
+          funcArr.push([cursorPos - 5, cursorPos, cursorPos + 1, cursorPos + 2]);
           break;
         case 'IF':
           formulaBox.value = frontString + inputString + '[,,]' + backString;
           formulaBox.setSelectionRange(cursorPos + 1, cursorPos + 1);
           functionCheck = '';
+          funcArr.push([cursorPos - 2, cursorPos, cursorPos + 1, cursorPos + 2, cursorPos + 3]);
           break;
       }
 
-      console.log('체크하는 것', functionCheck);
+      functionPosRenew(funcArr, cursorPos, 'insert');
+      // console.log('체크하는 것', functionCheck);
+      console.log('funcArr', funcArr);
     }
   });
 
@@ -117,4 +140,30 @@ function calcFormula(formula) {
     },
     'json',
   );
+}
+
+function functionPosRenew(funcArr, CursorPos, method) {
+  if (funcArr.length == 0) {
+    return;
+  }
+  switch (method) {
+    case 'insert':
+      for (let i = 0; i < funcArr.length; i++) {
+        for (let j = 0; j < funcArr[i].length; j++) {
+          if (funcArr[i][j] >= CursorPos - 1) {
+            funcArr[i][j] += 1;
+          }
+        }
+      }
+      break;
+    case 'backspace':
+      for (let i = 0; i < funcArr.length; i++) {
+        for (let j = 0; j < funcArr[i].length; j++) {
+          if (funcArr[i][j] >= CursorPos) {
+            funcArr[i][j] -= 1;
+          }
+        }
+      }
+      break;
+  }
 }
