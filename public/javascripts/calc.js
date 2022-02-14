@@ -3,6 +3,15 @@ window.onload = function () {
   setViewChange();
 };
 
+function btn
+
+
+
+
+
+
+
+
 function setViewChange() {
   const referenceBtn = document.getElementById('referenceBtn');
 
