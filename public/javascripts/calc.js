@@ -168,25 +168,25 @@ function functionPosRenew(funcArr, CursorPos, method) {
   }
 }
 
-function funcCheck(inputString) {
-  const regExp = [
-    [/\bABS(?!\[)\b/, 'ABS[]'],
-    [/\bROOT(?!\[)\b/, 'ROOT[]'],
-    [/\bSIN(?!\[)\b/, 'SIN[]'],
-  ];
+// function funcCheck(inputString) {
+//   const regExp = [
+//     [/\bABS(?!\[)\b/, 'ABS[]'],
+//     [/\bROOT(?!\[)\b/, 'ROOT[]'],
+//     [/\bSIN(?!\[)\b/, 'SIN[]'],
+//   ];
 
-  let cursorPos = -1;
-  let changeString = inputString;
+//   let cursorPos = -1;
+//   let changeString = inputString;
 
-  regExp.forEach(function (item, index, array) {
-    console.log('item', item);
-    console.log('inputString.search(item)');
-    if (inputString.search(item[0]) != -1) {
-      cursorPos = inputString.search(item[0]);
-      changeString = inputString.replace(item[0], item[1]);
-    }
-  });
+//   regExp.forEach(function (item, index, array) {
+//     console.log('item', item);
+//     console.log('inputString.search(item)');
+//     if (inputString.search(item[0]) != -1) {
+//       cursorPos = inputString.search(item[0]);
+//       changeString = inputString.replace(item[0], item[1]);
+//     }
+//   });
 
-  console.log('changeString', changeString);
-  return [changeString, cursorPos];
-}
+//   console.log('changeString', changeString);
+//   return [changeString, cursorPos];
+// }
